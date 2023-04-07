@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract VestingContract {
 ERC20 public token;
-address owner;
+address public owner;
 address contractAddress;
 constructor() {
     // token = ERC20(_token);
