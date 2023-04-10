@@ -89,7 +89,7 @@ function withdraw(uint256 index) external {
     emit VestingWithdrawn(msg.sender, index, withdrawable);
 }
 
-function calculate_available_withdraw_token(uint256 index) public view returns(uint256) {
+function calculate_available_withdraw_token(uint256 index) public returns(uint256) {
     VestingSchedule storage vesting = vestings[msg.sender][index];
     uint256 total_slice_count = (getTime() - vesting.start) / vesting.slice_period;
     uint256 total_mul_withdraw = (total_slice_count * vesting.recive_on_interval) - vesting.temp;
@@ -97,6 +97,8 @@ function calculate_available_withdraw_token(uint256 index) public view returns(u
         return total_mul_withdraw;
     }
     else{
+        vesting.locked = false;
+        vesting.claimed = true;
         return vesting.amount;
     }
 }
