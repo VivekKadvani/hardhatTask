@@ -1,6 +1,6 @@
-// SPDX-License-Identifier: MIT
+    // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+    pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract VestingContract {
@@ -54,7 +54,7 @@ function lock(
     address addressOfToken
 ) external {
     require(_amount>0,"Amount not be Zero");
-    require(_start > getTime(),"eneter valid time" );
+    require(_start > getTime(),"eneter valid time : start time should be greater than current time" );
     require(whitelist[addressOfToken], "You are not allowed to use this contract.");
     VestingSchedule memory newVesting = VestingSchedule({
         amount: _amount,

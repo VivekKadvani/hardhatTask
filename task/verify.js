@@ -1,6 +1,6 @@
 const { task } = require("hardhat/config");
 task("VerifyContract", "Verify deployed contract on Etherscan")
-    .addParam("contract", "Contract address deployed")
+    .addParam("contract", "Contract name ")
     .addParam("address", "Enter token address")
     .addParam("amount","Initital supply")
     .setAction(async (args) => {
